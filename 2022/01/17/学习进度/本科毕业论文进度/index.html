@@ -127,6 +127,68 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -156,7 +218,60 @@
         </header>
 
         <div class="post-content">
-            
+            <h1 id="01月14日"><a href="#01月14日" class="headerlink" title="01月14日"></a>01月14日</h1><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>看了两篇论文：</p>
+<ul>
+<li><p>Spatio-Temporal Graph Convolutional Networks: A Deep Learning Framework for Traffic Forecasting</p>
+<ul>
+<li>用于交通流量预测，与论文内容相关</li>
+</ul>
+</li>
+<li><p>Language Modeling with Gated Convolutional Networks</p>
+<ul>
+<li>主要是GLU的激活函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>复现STGCN代码，但是仍存在一些问题</p>
+</li>
+</ul>
+<h2 id="下一阶段任务"><a href="#下一阶段任务" class="headerlink" title="下一阶段任务"></a>下一阶段任务</h2><ul>
+<li><p>解决上述复现代码中的一些问题，然后将代码可以在一些标准数据集上跑出比较正确的结果</p>
+</li>
+<li><p>对比其他交通流量预测方法</p>
+</li>
+</ul>
+<h1 id="01月07日"><a href="#01月07日" class="headerlink" title="01月07日"></a>01月07日</h1><h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>看了两篇论文：</p>
+<ul>
+<li><p>Towards Deeper Graph Neural Networks (DAGNN)：</p>
+<ul>
+<li>通过解耦转换和传播操作</li>
+</ul>
+</li>
+<li><p>Simple and Deep Graph Convolutional Networks (GCNII)</p>
+<ul>
+<li>通过残差连接和恒等变换</li>
+</ul>
+</li>
+</ul>
+<p>  主要是将关于如何拓深GCN的卷积层</p>
+</li>
+<li><p>安装配置GPU版实验环境，可以将GCN实验跑通</p>
+</li>
+<li><p>仔细阅读和理解GCN模型代码</p>
+</li>
+</ul>
+<h2 id="下一阶段任务-1"><a href="#下一阶段任务-1" class="headerlink" title="下一阶段任务"></a>下一阶段任务</h2><p>找到了两篇与交通预测相关的论文综述</p>
+<ul>
+<li><p>Graph Neural Network for Traffic Forecasting: A Survey</p>
+</li>
+<li><p>Spatial-temporal graph neural network for traffic forecasting: An overview and open research issues</p>
+</li>
+</ul>
+<p>下一阶段就是详细阅读这两篇综述，根据综述寻找一些解决交通预测的方法，在做实验中去了解方法等，在做实验中思考寻找更好的方法，在交通数据集上有比较的效果。</p>
+
         </div>
 
         
