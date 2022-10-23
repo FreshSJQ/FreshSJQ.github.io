@@ -202,7 +202,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">一月 15, 2022&nbsp;&nbsp;13:09:38</a>
+                        Date: <a href="#">十月 21, 2022&nbsp;&nbsp;13:09:38</a>
                         </span>
                     
                     
@@ -264,6 +264,9 @@
 
 <p>但是在安装的过程中出现<code>Building wheel for torch-sparse (setup.py) </code>，一直卡死，安装不了，网上找到一个解决办法，下载该库的安装文件，单独安装，即<a target="_blank" rel="noopener" href="https://data.pyg.org/whl/">https://data.pyg.org/whl/</a>到这个网站下找到适配的版本，我最后下载了<a target="_blank" rel="noopener" href="https://data.pyg.org/whl/torch-1.10.0%2Bcu111.html">https://data.pyg.org/whl/torch-1.10.0%2Bcu111.html</a>下的<code>torch_sparse-0.6.13-cp38-cp38-linux_x86_64.whl</code>文件（其中python版本要适配），然后上传到服务器之后，<code>pip install torch_sparse-0.6.13-cp38-cp38-linux_x86_64.whl</code>即可。</p>
 <h2 id="3-4-运行PYG中的GCN"><a href="#3-4-运行PYG中的GCN" class="headerlink" title="3.4 运行PYG中的GCN"></a>3.4 运行PYG中的GCN</h2><p>出现无法下载数据集的问题，原因是国内无法正常连接github网络，因此需要修改一下下载地址。找到<code>/miniconda3/lib/python3.8/site-packages/torch_geometric/datasets</code>下的<code>planetoid.py</code>修改，将其中<code>url = &#39;https://github.com/kimiyoung/planetoid/raw/master/data</code>替换为<code>url=&#39;https://gitee.com/jiajiewu/planetoid/raw/master/data</code>即可。</p>
+<p><strong>问题2：_pickle.UnpicklingError: invalid load key, ‘&lt;’.</strong></p>
+<p>解决办法：<code>i solved this problem by re-downloading the model</code> 来自<a target="_blank" rel="noopener" href="https://github.com/CSAILVision/places365/issues/49">https://github.com/CSAILVision/places365/issues/49</a></p>
+<p>师兄说的对：多去google上搜索问题，多看看英文的解决方法（我绝大部分情况都是在百度上搜的，绝大部分问题也都是能解决的，解决不了的我也会去google上搜，但是用的还是有点少，主要畏惧英语……）</p>
 
         </div>
 
@@ -297,10 +300,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/01/15/%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6/LeetCode%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A/">LeetCode进度报告</a>
+                <a class="prev" rel="prev" href="/2022/10/22/%E8%AE%BA%E6%96%87%E6%A1%A3%E6%A1%88/Heterogeneous-and-Heterophily-GNNs/">Heterogeneous and Heterophily GNNs</a>
             
             
-            <a class="next" rel="next" href="/2022/01/15/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Hexo在GitHub上搭建个人博客</a>
+            <a class="next" rel="next" href="/2022/01/19/%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6/%E7%BD%91%E8%AF%BE%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6/">网课学习进度</a>
             
         </section>
 
