@@ -13,7 +13,7 @@
 
 
 
-<title>Heterogeneous and Heterophily GNNs | 个人博客</title>
+<title>Graph Laplacian | 个人博客</title>
 
 
 
@@ -193,7 +193,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Heterogeneous and Heterophily GNNs</h1>
+            <h1 class="post-title">Graph Laplacian</h1>
             
                 <div class="post-meta">
                     
@@ -202,14 +202,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">十月 22, 2022&nbsp;&nbsp;11:08:42</a>
+                        Date: <a href="#">十月 25, 2022&nbsp;&nbsp;20:55:10</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E8%AE%BA%E6%96%87%E6%A1%A3%E6%A1%88/">论文档案</a>
+                                <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>
                             
                         </span>
                     
@@ -219,73 +219,40 @@
 
         <div class="post-content">
             <blockquote>
-<p><strong>异质性和异配性的区别：</strong></p>
-<ul>
-<li><p>异质性（Heterogeneous）与同质性（Homogeneous）：</p>
-<ul>
-<li>异质性：强调节点类型和边类型的多样性。</li>
-<li>同质性：强调节点和边的类型单一。</li>
-</ul>
-</li>
-<li><p>异配性（Heterophily）与同配性（Hemophily）：</p>
-<ul>
-<li>异配性：强调节点和其邻居的相似度较低（比如标签差异较大）。</li>
-<li>同配性：强调节点与其邻居特性较为吻合（向量表示或者标签较为接近）。</li>
-</ul>
-</li>
-</ul>
+<p>真服了，从一开始看GCN (Semi-Supervised Classification with Graph Convolutional Networks) ，里面有关于Laplacian Matrix方面的内容，然后看的云里雾里的，最近再看到，又有一些是关于这方面的内容，就完全没有搞懂，所以一定要写点东西，来加强一下记忆，以及增强一下对Laplacian Matrix的认知！！！</p>
 </blockquote>
-<h1 id="值得关注的研究学者"><a href="#值得关注的研究学者" class="headerlink" title="值得关注的研究学者"></a>值得关注的研究学者</h1><p>仅博主个人整理，所以会存在较大偏差，如果您有幸看到这篇文章，并且有所补充，还请联系<a href="janqsong@163.com">janqsong@163.com</a>，谢谢！（还在持续补充中……）</p>
-<table>
-<thead>
-<tr>
-<th>学者</th>
-<th>学校 or 机构</th>
-<th>ResearchGate链接</th>
-<th>待补充</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Philip S. Yu</td>
-<td>University of Illinois at Chicago</td>
-<td><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Philip-Yu-3">ReserachGate</a></td>
-<td></td>
-</tr>
-<tr>
-<td>Chuan Shi</td>
-<td>Beijing University of Posts and Telecommunications</td>
-<td><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Chuan-Shi-8">ResearchGate</a></td>
-<td></td>
-</tr>
-<tr>
-<td>Yizhou Sun</td>
-<td>University of California, Los Angeles</td>
-<td><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Yizhou-Sun">ResearchGate</a></td>
-<td></td>
-</tr>
-<tr>
-<td>Jure Leskovec</td>
-<td>Stanford University</td>
-<td><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Jure-Leskovec">ResearchGate</a></td>
-<td></td>
-</tr>
-<tr>
-<td>Jie Tang</td>
-<td>Tsinghua University</td>
-<td><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Jie-Tang-19">ResearchGate</a></td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="异质性（Heterogeneous）"><a href="#异质性（Heterogeneous）" class="headerlink" title="异质性（Heterogeneous）"></a>异质性（Heterogeneous）</h1><h2 id="Survey"><a href="#Survey" class="headerlink" title="Survey"></a>Survey</h2><blockquote>
-<p><strong>A Survey on Heterogeneous Graph Embedding: Methods, Techniques, Applications and Sources</strong> <br><em>Xiao Wang, Deyu Bo, Chuan Shi, Shaohua Fan, Yanfang Ye, Philip S. Yu</em></p>
-</blockquote>
+<h2 id="拉普拉斯算子"><a href="#拉普拉斯算子" class="headerlink" title="拉普拉斯算子"></a>拉普拉斯算子</h2><p>拉普拉斯算子是$n$维欧式空间中对函数的<strong>二阶微分算子</strong>，也是一个标量，下面给出了连续函数和离散函数的拉普拉斯函数的拉普拉斯算子的定义：</p>
+<ul>
+<li><p>对于n维函数$f(x_1,x_2,…,x_n)$，其拉普拉斯算子表示为：<br>$$<br>\Delta f= \frac{\partial^2 f}{\partial x_1^2} + \frac{\partial^2 f}{\partial x_2^2} + … + \frac{\partial^2 f}{\partial x_n^2} = \sum_{i=1}^n\frac{\partial^2 f}{\partial x_i^2}<br>$$</p>
+</li>
+<li><p>对于离散函数$f(x)$，其一阶导数可以近似得到（<code>相邻两个自变量间隔为1</code>）：<br>$$\begin{align*}<br>\frac{\partial f}{\partial x}&amp;=f’(x) =f(x+1)-f(x)\<br>\frac{\partial^2 f}{\partial x^2}&amp;=f’’(x)\</p>
+<pre><code>     &amp;=f&#39;(x)-f&#39;(x-1)\\
+     &amp;=f(x+1)-f(x)-f(x)+f(x-1)\\
+     &amp;=f(x+1)+f(x-1)-2f(x)
+</code></pre>
+<p>\end{align*}$$<br>因此，离散函数$f(x)$的拉普拉斯算子为：<br>$$<br> \Delta f=f(x+1)+f(x-1)-2f(x)<br>$$</p>
+</li>
+<li><p>对于离散函数$f(x,y)$，其拉普拉斯算子为：<br>$$\begin{align*}<br> \Delta f &amp;= f(x+1,y)+f(x-1,y)-2f(x,y)+f(x,y+1)+f(x,y-1)-2f(x,y)\</p>
+<pre><code> &amp;= f(x+1,y)+f(x-1,y)+f(x,y+1)+f(x,y-1)-4f(x,y)
+</code></pre>
+<p>\end{align*}$$</p>
+</li>
+</ul>
+<p>【知识补充：离散点求导的数学理论与方法】</p>
+<p>对于一个点的值（函数上）可以通过泰勒级数展开，对其进行近似：<br>$$<br>    f(x_{i+1})=f(x_i)+f’(x_i)h+\frac{f’’(x_i)}{2}h^2+…<br>$$</p>
+<p>解出来一阶导数：<br>$$<br>f’(x_i)=\frac{f(x_{i+1})-f(x_i)}{h} - \frac{f’’(x_i)}{2}h + O(h^2)<br>$$</p>
+<p>如果把二阶以后的项去掉，那么一阶导数就是<br>$$<br>    f’(x_i)=\frac{f(x_{i+1}) - f(x_i)}{h}+O(h)<br>$$</p>
+<p>二阶导数就是</p>
+<h2 id="图拉普拉斯矩阵"><a href="#图拉普拉斯矩阵" class="headerlink" title="图拉普拉斯矩阵"></a>图拉普拉斯矩阵</h2><p>给定无向图$G=(V,E)$，其中$V={v_1, v_2, …, v_n}$是节点集合，$E={e_1,e_2,…,e_m}$，是边集合，邻接矩阵$A\in {0,1}^{n\times n}$，其中<br>$$<br>A_{i,j}=\begin{cases}1,\quad\text{如果}v_i\text{和}v_j\text{之间存在边}\0,\quad \text{其他情况}\end{cases}<br>$$<br>度矩阵$D\in\mathcal{Z}^{n\times n}$，其中<br>$$<br>D_{i,j}=\begin{cases}\text{degree}(v_i),\quad&amp;\text{如果}i=j\0,&amp; \text{其他情况}\end{cases}<br>$$<br>拉普拉斯矩阵（Laplacian Matrix）定义为<br>$$<br>L=D-A<br>$$</p>
+<h3 id="推导-方法1"><a href="#推导-方法1" class="headerlink" title="推导-方法1"></a>推导-方法1</h3><p>对于包含$N$个节点的图$G$，可以将其看做为一个包含$N$个变量的离散函数$f$，节点$i$的取值为$x_i$表示，用$N_i$表示图中节点$i$的一阶邻居节点集合，$j\in N_i$表示节点$i$的一个一阶邻居节点。根据上述离散函数$f(x)$拉普拉斯算子的结果形式，对节点$i$进行类比，如下等式所示，<code>节点$i$的拉普拉斯算子描述的是节点与邻居节点之间信号的差异</code>（这里是否可以这样理解，就是根据上述的2维，进行类比，得到2维拉普拉斯算子就是周围离散点对中心点的差值，但是有个疑问是，上面那个是周围点减中间点，而下面这个是中间点减邻居点）：<br>$$<br>\Delta{f_{x_i}}=\sum_{j\in N_i}(x_i-x_j)<br>$$</p>
+<p>为了对上述节点的邻居集合$N_i$使用邻接矩阵进行替换，需要继续对上述图中的拉普拉斯算子进行矩阵形式的推导，首先，将图$G$中的各个节点的取值表示成矩阵的形式：<br>$$<br>    X^{N\times 1} = \left( \begin{matrix}x_1\x_2\.\.\.\x_n\end{matrix}\right)<br>$$</p>
+<p>$a_i4表示邻接矩阵中的第$i$行，定义$A_i=[a_{i1}, a_{i2},…,a_{iN}]$，那么对于节点$i$，可以进一步进行展开：<br>$$\begin{align*}<br>    \Delta f_{x_i}  &amp;=\sum_{j\in N_i}(x_i-x_j)\<br>                    &amp;=<br>\end{align*}$$</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p> [1] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/368878987">https://zhuanlan.zhihu.com/p/368878987</a></p>
+<p> [2] <a target="_blank" rel="noopener" href="https://blog.csdn.net/gophae/article/details/102518309">https://blog.csdn.net/gophae/article/details/102518309</a></p>
 <blockquote>
-<p>**Graph Neural Networks: Foundations, Frontiers, and Applications (Chapter 16 Heterogeneous Graph Neural Networks)**<br>Chuan Shi </p>
+<p>没写完，没坚持写下去……</p>
 </blockquote>
-<h1 id="异配性（Heterophily）"><a href="#异配性（Heterophily）" class="headerlink" title="异配性（Heterophily）"></a>异配性（Heterophily）</h1><h2 id="Survey-1"><a href="#Survey-1" class="headerlink" title="Survey"></a>Survey</h2><blockquote>
-<p><strong>Graph Neural Networks for Graphs with Heterophily: A Survey</strong> <br><em>Xin Zheng, Yixin Liu, Shirui Pan, Miao Zhang, Di Jin, Philip S. Yu</em></p>
-</blockquote>
-<h2 id="2022-顶会"><a href="#2022-顶会" class="headerlink" title="2022 顶会"></a>2022 顶会</h2>
+
         </div>
 
         
@@ -312,10 +279,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/10/25/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Graph-Laplacian/">Graph Laplacian</a>
+                <a class="prev" rel="prev" href="/2022/10/27/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/latex%E5%85%AC%E5%BC%8F%E7%AC%A6%E5%8F%B7/">latex公式符号</a>
             
             
-            <a class="next" rel="next" href="/2022/10/21/%E5%AE%9E%E9%AA%8C/GNN%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%EF%BC%88Linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89/">GNN环境配置（Linux+服务器）</a>
+            <a class="next" rel="next" href="/2022/10/22/%E8%AE%BA%E6%96%87%E6%A1%A3%E6%A1%88/Heterogeneous-and-Heterophily-GNNs/">Heterogeneous and Heterophily GNNs</a>
             
         </section>
 
